@@ -16,5 +16,8 @@ RUN pip install --upgrade pip setuptools wheel
 # Install the dependencies from requirements.txt
 RUN pip install -r requirements.txt
 
+# Install python-multipart to handle form data in FastAPI
+RUN pip install python-multipart
+
 # Run the main application
 CMD ["python3", "main.py"]
