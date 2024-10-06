@@ -91,8 +91,7 @@ jobs:
 
          docker ps -q --filter "name=praveen-sensor2" | grep -q . && docker stop praveen-sensor2 && docker rm -fv praveen-sensor2
 
-
-          docker ps -q --filter "name=pkr-test" | grep -q . && docker stop pkr-test && docker rm -fv pkr-test
+         
 
       - name: Run Docker Image to serve users
         run: |
