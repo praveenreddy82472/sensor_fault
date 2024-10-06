@@ -89,11 +89,11 @@ jobs:
       - name: Stop and remove sensor container if running
         run: |
 
-         docker ps -q --filter "name=praveen-sensor2" | grep -q . && docker stop praveen-sensor2 && docker rm -fv praveen-sensor2
+         docker ps -q --filter "name=sensor2" | grep -q . && docker stop sensor2 && docker rm -fv sensor2 || echo "No container named praveen-sensor2 is running"
 
-         
+
 
       - name: Run Docker Image to serve users
         run: |
-         docker run -d -p 80:8080 --name=praveen-sensor2 -e 'MONGO_DB_URL=${{ secrets.MONGO_DB_URL }}' -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -e 'AWS_REGION=${{ secrets.AWS_REGION }}'  ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+         docker run -d -p 80:8080 --name=sensor2 -e 'MONGO_DB_URL=${{ secrets.MONGO_DB_URL }}' -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -e 'AWS_REGION=${{ secrets.AWS_REGION }}'  ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
 
